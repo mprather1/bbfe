@@ -1,22 +1,44 @@
 allUsersView = Backbone.View.extend({
   tagName: 'ul',
-  className: 'usersList',
 
-  render: function() {
-    for (var i = 0; i < this.collection.length; i++) {
-      this.renderItem(this.collection.models[i]);
-    };
-    $(this.container).find(this.className).remove();
-    this.$el.appendTo(this.options.container);
-    return this;
+  initialize: function( initialUsers ) {
+    this.collection = new UsersCollection();
+    this.collection.fetch({reset: true});
+    this.render();
+
+    this.listenTo(this.collection, 'add', this.renderUser);
+    this.listenTo(this.collection, 'reset', this.render)
   },
 
-  renderItem: function(model) {
-    var item = new singleUserView({
-      "model": model
+  render: function() {
+    this.collection.each(function(item) {
+      this.renderUser(item);
+    }, this);
+  },
+
+  renderUser: function( item ) {
+    var user = new singleUserView({
+      model: item
     });
-    item.render().$el.appendTo(this.$el);
+    this.$el.append(user.render().el);
   }
+  // className: 'usersList',
+  //
+  // render: function() {
+  //   for (var i = 0; i < this.collection.length; i++) {
+  //     this.renderItem(this.collection.models[i]);
+  //   };
+  //   $(this.container).find(this.className).remove();
+  //   this.$el.appendTo(this.options.container);
+  //   return this;
+  // },
+  //
+  // renderItem: function(model) {
+  //   var item = new singleUserView({
+  //     "model": model
+  //   });
+  //   item.render().$el.appendTo(this.$el);
+  // }
 
   // render: function() {
   //   this.collection.each(this.addUser, this);

@@ -1,4 +1,7 @@
-var usersCollection = new UsersCollection;
+// $(function() {
+//   new allUsersView();
+// });
+
 //
-// var userGroupView = new allUsersView({ collection: usersCollection });
+ var userGroupView = new allUsersView();
 // $('#allUsers').html(userGroupView.render().el);
