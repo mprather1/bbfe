@@ -1,2 +1,4 @@
 var usersCollection = new UsersCollection;
-usersCollection.fetch();
+//
+// var userGroupView = new allUsersView({ collection: usersCollection });
+// $('#allUsers').html(userGroupView.render().el);
