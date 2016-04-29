@@ -1,4 +1,5 @@
 allUsersView = Backbone.View.extend({
+
   tagName: 'ul',
 
   initialize: function( initialUsers ) {
