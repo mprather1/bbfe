@@ -3,7 +3,7 @@ allUsersView = Backbone.View.extend({
   tagName: 'ul',
 
   initialize: function( initialUsers ) {
-    this.collection = new UsersCollection();
+    this.collection = new userCollection();
     this.collection.fetch({reset: true});
     this.render();
 
@@ -15,6 +15,7 @@ allUsersView = Backbone.View.extend({
     this.collection.each(function(item) {
       this.renderUser(item);
     }, this);
+    return this;
   },
 
   renderUser: function( item ) {
@@ -50,5 +51,11 @@ allUsersView = Backbone.View.extend({
   //   var userView = singleUserView ({ model: user });
   //   this.$el.append(userView.render().el);
   // }
+
+});
+
+$(function() {
+  var userGroupView = new allUsersView();
+  $('#allUsers').html(userGroupView.el)
 
 });
