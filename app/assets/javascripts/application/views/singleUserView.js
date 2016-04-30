@@ -1,6 +1,7 @@
 singleUserView = Backbone.View.extend({
 
   tagName: 'li',
+  className: 'userElement',
 
   template: _.template("<%= name %>"),
 

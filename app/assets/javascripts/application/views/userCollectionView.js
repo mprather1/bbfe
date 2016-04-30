@@ -1,6 +1,7 @@
 allUsersView = Backbone.View.extend({
 
   tagName: 'ul',
+  className: 'userList',
 
   initialize: function( initialUsers ) {
     this.collection = new userCollection();
